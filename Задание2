@@ -1,0 +1,7 @@
+SELECT c.last_name
+FROM client c
+JOIN _view v ON c.id = v.client_id
+JOIN apartment a ON v.apartment_id = a.id
+WHERE a.rooms = 3
+GROUP BY c.last_name
+HAVING COUNT(DISTINCT a.id) >= 2;
